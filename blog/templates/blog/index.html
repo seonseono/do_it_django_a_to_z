@@ -11,11 +11,11 @@
          title, created_at, content 가져옴 -->
     {% for p in posts %}
         <hr/>
-        <h3>
+        <h2>
             <a href="{{ p.get_absolute_url }}">
                {{ p.title }}
             </a>
-        </h3>
+        </h2>
         <h4>{{ p.created_at }}</h4>
         <p>{{ p.content }}</p>
     {% endfor %}

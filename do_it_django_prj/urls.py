@@ -20,5 +20,6 @@ from django.urls import path, include
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("blog/", include('blog.urls')),
+    path('', include('single_pages.urls')), # 아무것도 안 들어왔을 때 single_pages.url로 이동
 
 ]

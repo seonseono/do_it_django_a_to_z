@@ -17,3 +17,4 @@ def single_post_page(request, pk):
                   {
                       'post' : post,
                   })
+
