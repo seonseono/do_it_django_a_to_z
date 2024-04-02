@@ -9,7 +9,7 @@
     <!-- posts로 전체 blog post를 list 형태로 받아옴
         리스트 길이만큼 반복해서 자동으로 포스트 전체의
          title, created_at, content 가져옴 -->
-    {% for p in posts %}
+    {% for p in post_list %}
         <hr/>
         <h2>
             <a href="{{ p.get_absolute_url }}">
