@@ -7,5 +7,13 @@ def index(request):
                   'blog/index.html',
                   {
                       'posts':posts,
-                  }
-    )
+                  })
+
+def single_post_page(request, pk):
+    # 하나의 게시물만 가져옴 기본키값=기본키값
+    post = Post.objects.get(pk=pk)
+    return render(request,
+                  'blog/single_post_page.html',
+                  {
+                      'post' : post,
+                  })
