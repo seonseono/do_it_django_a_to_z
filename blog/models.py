@@ -6,6 +6,8 @@ class Post(models.Model):
 
     head_image = models.ImageField(upload_to='blog/images/%Y/%m/%d', # 폴더를 만들어서 주소로 이미지 가져옴
                                    blank=True) # 이미지 공백 허용(이미지 첨부하지 않아도 작동함)
+    file_upload = models.FileField(upload_to='blog/files/%Y/%m/%d',
+                                   blank=True) # 마찬가지로 파일 첨부 생략 가능 옵션
     created_at = models.DateTimeField(auto_now_add=True) # 처음 레코드가 생성된 시점을 자동으로 입력
     update_at = models.DateTimeField(auto_now=True) # 레코드가 가장 마지막으로 저장된 시점(수정된 시점)
 
