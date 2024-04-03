@@ -3,6 +3,7 @@ import os
 
 class Post(models.Model):
     title = models.CharField(max_length=30) # Title field
+    hook_text = models.CharField(max_length=100, blank=True)
     content = models.TextField() # Content field
 
     head_image = models.ImageField(upload_to='blog/images/%Y/%m/%d', # 폴더를 만들어서 주소로 이미지 가져옴
