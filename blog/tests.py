@@ -54,7 +54,7 @@ class TestView(TestCase):
 
         navbar = soup.nav
         self.assertIn('Blog', navbar.text)
-        soup = BeautifulSoup('About Me', navbar.text)
+        self.assertIn('About Me', navbar.text)
 
         self.assertIn(post_001.title, soup.title.text)
 
