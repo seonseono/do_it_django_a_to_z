@@ -21,7 +21,7 @@
         </div>
         <div class="card-footer text-muted">
           Posted on {{ p.created_at }} by
-          <a href="#">Writer name(will be added)</a>
+          <a href="#">{{ p.author | upper }}</a>
         </div>
     </div>
     {% endfor %}
