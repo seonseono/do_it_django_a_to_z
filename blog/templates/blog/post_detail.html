@@ -6,6 +6,14 @@
 
 {% block main_area %}
   <div id='post-area'>
+
+    <!-- Category & Badge -->
+    {% if post.category %}
+      <span class="badge badge-secondary float-right">{{ post.category }}</span>
+    {% else %}
+      <span class="badge badge-secondary float-right">Unclassified</span>
+    {% endif %}
+
     <!-- Title -->
     <h1 class="mt-4">{{ post.title }}</h1>
     {% if post.hook_text %}

@@ -2,6 +2,16 @@ from django.db import models
 from django.contrib.auth.models import User
 import os
 
+class Category(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    slug = models.SlugField(max_length=200, unique=True, allow_unicode=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = 'Categories'
+
 class Post(models.Model):
     title = models.CharField(max_length=30) # Title field
     hook_text = models.CharField(max_length=100, blank=True)
@@ -13,8 +23,10 @@ class Post(models.Model):
                                    blank=True) # 마찬가지로 파일 첨부 생략 가능 옵션
     created_at = models.DateTimeField(auto_now_add=True) # 처음 레코드가 생성된 시점을 자동으로 입력
     update_at = models.DateTimeField(auto_now=True) # 레코드가 가장 마지막으로 저장된 시점(수정된 시점)
-    # 작성자 필드 추가
+    # author field
     author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+    # category field
+    category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return f'[{self.pk}] {self.title} :: {self.author}'
@@ -27,3 +39,4 @@ class Post(models.Model):
 
     def get_file_ext(self):
         return self.get_file_name().split('.')[-1] # 파일 이름을 split해서 맨 뒤의 확장자만 반환
+
