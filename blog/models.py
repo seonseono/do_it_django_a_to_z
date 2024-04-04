@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 import os
 
 class Post(models.Model):
@@ -12,9 +13,11 @@ class Post(models.Model):
                                    blank=True) # 마찬가지로 파일 첨부 생략 가능 옵션
     created_at = models.DateTimeField(auto_now_add=True) # 처음 레코드가 생성된 시점을 자동으로 입력
     update_at = models.DateTimeField(auto_now=True) # 레코드가 가장 마지막으로 저장된 시점(수정된 시점)
+    # 작성자 필드 추가
+    author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
-        return f'[{self.pk}] {self.title}'
+        return f'[{self.pk}] {self.title} :: {self.author}'
 
     def get_absolute_url(self):
         return f'/blog/{self.pk}/'
