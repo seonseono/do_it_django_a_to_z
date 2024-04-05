@@ -3,6 +3,7 @@ from . import views
 # 해당 경로 안의 views를 import
 
 urlpatterns = [
+    path('update_post/<int:pk>/', views.PostUpdate.as_view()),
     path('create_post/', views.PostCreate.as_view()),
     path('tag/<str:slug>/', views.tag_page),
     path('category/<str:slug>/', views.category_page),
