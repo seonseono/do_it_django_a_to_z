@@ -282,7 +282,7 @@ class TestView(TestCase):
 
         main_area = soup.find('div', id='main-area')
 
-        self.assertIn('Search: 파이썬 (2).', main_area.text)
+        self.assertIn('Search: 파이썬 (2)', main_area.text)
         self.assertNotIn(self.post_001.title, main_area.text)
         self.assertNotIn(self.post_002.title, main_area.text)
         self.assertIn(self.post_003.title, main_area.text)

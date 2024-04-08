@@ -22,8 +22,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("blog/", include('blog.urls')),
-    path('', include('single_pages.urls')), # url에 아무것도 안 들어왔을 때 single_pages.url로 이동
-    path('markdownx/', include('markdownx.urls'))
+    path('markdownx/', include('markdownx.urls')),
+    path('accounts/', include('allauth.urls')),
+    path('', include('single_pages.urls')),  # url에 아무것도 안 들어왔을 때 single_pages.url로 이동
 
 ]
 

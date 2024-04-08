@@ -78,6 +78,7 @@ class PostCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
 class PostList(ListView):
     model = Post
     ordering = '-pk' # 이 옵션이 없으면 post1부터 정렬됨
+    paginate_by = 5
     # template_name = 'blog/post_list.html'
     # CBV 사용 시 템플릿 이름 강제 지정
 
