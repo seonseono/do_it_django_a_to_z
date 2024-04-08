@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from markdownx.models import MarkdownxField
+from markdownx.utils import markdown
 import os
 
 class Tag(models.Model):
@@ -29,7 +31,7 @@ class Category(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=30) # Title field
     hook_text = models.CharField(max_length=100, blank=True)
-    content = models.TextField() # Content field
+    content = MarkdownxField() # Content field
 
     head_image = models.ImageField(upload_to='blog/images/%Y/%m/%d', # 폴더를 만들어서 주소로 이미지 가져옴
                                    blank=True) # 이미지 공백 허용(이미지 첨부하지 않아도 작동함)
@@ -56,3 +58,5 @@ class Post(models.Model):
     def get_file_ext(self):
         return self.get_file_name().split('.')[-1] # 파일 이름을 split해서 맨 뒤의 확장자만 반환
 
+    def get_content_markdown(self):
+        return markdown(self.content) # content 미리보기 함수

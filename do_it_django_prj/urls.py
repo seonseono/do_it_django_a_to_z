@@ -23,6 +23,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("blog/", include('blog.urls')),
     path('', include('single_pages.urls')), # url에 아무것도 안 들어왔을 때 single_pages.url로 이동
+    path('markdownx/', include('markdownx.urls'))
+
 ]
 
 # [리스트]+[리스트] -> urlpatterns+urlpatterns
